@@ -1,0 +1,77 @@
+$panelwidth: 33%
+$top_margin: 68px
+
+.controls
+  position: absolute
+  top: $top_margin
+
+  .cool-button
+    position: absolute
+    z-index: 1000
+    a
+      display: inline-block
+      font-size: 20px
+      color: white
+      cursor: pointer
+      padding: 15px 22px
+    &.info
+      // $main blue
+      background: rgba(0, 149, 219, 0.92)
+      &:hover
+        // $hover_color
+        background: rgba(236, 101, 89, 0.92)
+
+    &.close
+      background: rgba(236, 101, 89, 0.92)
+      opacity: 1
+      &:hover
+        opacity: 0.5
+      a
+        padding: 19px 21px
+
+#sidepanel
+  position: absolute
+  background: #ffffff
+  height: 100%
+  width: $panelwidth
+  z-index: 2
+  top: $top_margin
+  overflow-y: auto
+
+  @include transition(-webkit-transform ease 250ms)
+  @include transition(transform ease 250ms)
+  float: left
+
+  @media (max-width: $screen-xs-max)
+    width: 100%
+
+  &.left
+    left: $panelwidth * -1
+    @media (max-width: $screen-xs-max)
+      left: 0
+      display: none
+
+  &.visible.left
+    @media (min-width: $screen-sm-min)
+      @include transform(translate3d(100%, 0, 0))
+      -webkit-box-shadow: 10px 10px 10px 0 rgba(0, 0, 0, 0.25)
+      -moz-box-shadow: 10px 10px 10px 0 rgba(0, 0, 0, 0.25)
+      box-shadow: 10px 10px 10px 0 rgba(0, 0, 0, 0.25)
+    @media (max-width: $screen-xs-max)
+      display: block
+
+  .project
+    padding: 40px
+
+    .header
+      font-size: 14px
+
+      .icon
+        margin-right: 10px
+        font-size: 37px
+        color: $grey
+
+      .regions-header
+        font-weight: 700
+        font-size: 17px
+
